@@ -8,12 +8,14 @@ import { LocalStorageService } from './services/auth/local-storage.service'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [	
     AppComponent,
     LoginComponent,
-      TasksComponent
+      TasksComponent,
+      ListComponent
    ],
   imports: [
     BrowserModule,

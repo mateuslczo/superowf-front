@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   doLogin(): void {
 
-    this.authService.doAuth(this.auth).subscribe(data => { this.authorization = data; });  ///CHAMANDO DUAS VEZES NUMA CLICADA SÓ
+    this.authService.doAuth(this.auth).subscribe(data => { this.authorization = data; });
 
     if (this.authorization !== null) {
 
