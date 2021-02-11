@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../auth/local-storage.service';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,7 @@ export class TaskService {
 
   taskById(id: number): Observable<any> {
 
-    return this.http.get(this.URL_API + '/tasks/' + id);
+    return this.http.get(this.URL_API + '/tasks/' + id).pipe(take(1));
 
   }
 

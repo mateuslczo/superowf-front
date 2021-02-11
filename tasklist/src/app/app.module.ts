@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { ListComponent } from './list/list.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [	
     AppComponent,
     LoginComponent,
       TasksComponent,
-      ListComponent
+      ListComponent,
+      EditComponent
    ],
   imports: [
     BrowserModule,
