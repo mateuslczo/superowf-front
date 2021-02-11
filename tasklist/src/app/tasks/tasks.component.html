@@ -1,3 +1,33 @@
-<p>
-  tasks works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-6">
+        <form method="post" #frm="ngForm" >
+
+          <div class="row" id="formContainer" style="background-color:whitesmoke">
+
+            <div class="container-fluid myFieldForm">
+              <div class="fieldsForm label-float">
+                <input type="text" id="title" name="title" [(ngModel)]="tasks.Title" placeholder="Titulo"
+                  required>
+                <label for="tilte">Titulo da tarefa</label>
+              </div>
+
+            </div>
+
+
+
+
+          </div>
+
+
+
+        </form>
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div>
+  </div>
+</div>

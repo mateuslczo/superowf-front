@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   doLogin(): void {
 
-   this.authService.doAuth(this.auth).subscribe(data => { this.authorization = data; });  ///CHAMANDO DUAS VEZES NUMA CLICADA SÓ
+    this.authService.doAuth(this.auth).subscribe(data => { this.authorization = data; });  ///CHAMANDO DUAS VEZES NUMA CLICADA SÓ
 
     if (this.authorization !== null) {
 
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
   }
 
   callTasks(): void {
-    this.router.navigate(['/tasks']);
+    this.router.navigate(['tasks']);
   }
 
 }
