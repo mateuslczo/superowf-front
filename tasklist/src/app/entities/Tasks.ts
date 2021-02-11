@@ -1,18 +1,18 @@
-import { EnTypeStatus } from "./enums/EnTypeStatus.enum";
+import { EnTypeStatus } from './enums/EnTypeStatus.enum';
 
 export class Tasks {
 
-  Title:string;
+  Title: string;
 
-  Status: EnTypeStatus;
+  Status: number;// EnTypeStatus;
 
-  Description:string;
+  Description: string;
 
-  CreateDate?:Date;
+  CreateDate?: Date;
 
-  EditDate?:Date;
+  EditDate?: Date;
 
-  ConclusionDate?:Date;
+  ConclusionDate?: Date;
 }
 
 

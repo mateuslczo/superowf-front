@@ -1,3 +1,10 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box
+}
+
 
 :host {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -60,7 +67,14 @@ p {
   align-items: center;
 }
 
-
+.spnLogout {
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 20px;
+  background-color: #333;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
 svg.material-icons {
   height: 24px;
