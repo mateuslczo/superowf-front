@@ -67,7 +67,14 @@ p {
   align-items: center;
 }
 
-
+.spnLogout {
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 20px;
+  background-color: #333;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
 svg.material-icons {
   height: 24px;
