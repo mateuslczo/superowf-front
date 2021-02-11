@@ -1,0 +1,18 @@
+<div class="content" role="main">
+
+  <div class="row">
+    <!--janela do Login-->
+    <div id="windowLogin">
+      <div>
+        <div id="login" class="">
+          <h1><b>Status do acesso: </b>{{mensagem}}</h1>
+          <input type="text" name="Email" id="Email" [(ngModel)]="auth.Email" placeholder="email" required>
+          <input type="password" name="password" id="password" [(ngModel)]="auth.Password" placeholder="senha" required>
+          <button (click)="doLogin()" id="btnAccess">ENTRAR</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
