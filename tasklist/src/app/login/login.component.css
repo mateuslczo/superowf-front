@@ -1,0 +1,136 @@
+
+
+  a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: beige;
+
+}
+
+#topMenu, .rodape {
+
+  background-color: rgb(60, 71, 223);
+  width:100%;
+
+}
+
+#topMenu {
+    float: left;
+    position: relative;
+    padding: 20px;
+    box-shadow: 0px 0px 5px #888;
+}
+
+.rodape {
+  border: solid 1px Gray;
+  font-size:8pt;
+  font-family: Verdana;
+  font-weight:bold;
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  height: 120px;
+}
+
+#mainMenuLeft {
+    float: left;
+    position: relative;
+    padding: 20px;
+    width: max-content;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+}
+
+#mainMenuRight {
+    float: right;
+    position: relative;
+    padding: 10px;
+    padding-left: 360px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+
+}
+
+#btnAccess {
+    background-color: rgb(111, 146, 199);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+
+}
+
+#btnSlogan {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    background-color: rgb(111, 146, 199);
+    padding-top: 10px;
+    border-radius: 5px;
+    width: 390px;
+    box-shadow: 0px 0px 5px #fff;
+    cursor: pointer;
+    color: #fff;
+    padding-bottom: 10px
+}
+
+
+nav .spanMainMenu {
+    padding: 10px;
+}
+
+#topMenu span:hover {
+    background-color: beige;
+}
+
+#windowLogin {
+    padding: 25px 25px 25px;
+    float: left;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.centralizators{
+  float:left;
+  width: 30%;
+}
+#login {
+    float: right;
+    position: relative;
+    width: 30%;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    box-shadow: 0px 5px 10px rgb(66, 64, 64)
+}
+
+#login input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 20px 0px 20px;
+    padding-left: 20px;
+}
+
+#login h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    text-align: center;
+
+}
+
+#login button {
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 20px 0px 20px;
+    padding-left: 20px;
+    font-size: large;
+}

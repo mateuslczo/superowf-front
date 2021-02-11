@@ -1,0 +1,40 @@
+<div class="row">
+
+
+  <div class="col-md-1" id="divLeft"></div>
+
+  <div class="col-md-8" id="divCenter">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Status</th>
+          <th scope="col">Criada em</th>
+          <th scope="col">Última edição</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let item of tasks ">
+          <td>{{item.Id}}</td>
+          <td>{{item.Title}}</td>
+          <td>{{item.Description}}</td>
+          <td>{{item.Status}}</td>
+          <td>{{item.CreateDate | date: 'dd/MM/yyyy' }}</td>
+          <td>{{item.EditDate | date: 'dd/MM/yyyy' }}</td>
+          <td><button id="btn-edit" (click)="goEdit(item.Id)" class="btn btn-danger btns">Editar</button></td>
+          <td><button id="btn-add"  class="btn btn-danger btns">Criar</button></td>
+          <td><button id="btn-remove" (click)="goRemove(item.Id)" class="btn btn-danger btns">Excluir</button></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="col-md-1" id="divRight"></div>
+
+</div>
