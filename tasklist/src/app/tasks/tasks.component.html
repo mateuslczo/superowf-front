@@ -24,14 +24,11 @@
           <label class="input-group-text" for="Status">Status</label>
         </div>
 
-        <select class="custom-select" id="statust" name="statust" style="flex:none; width: fit-content;">
-          <option selected>Escolha...</option>
-          <option [value]="1">Aberto</option>
-          <option [value]="2">Em andamento</option>
-          <option [value]="3">Finalizada</option>
-          <option [value]="4">Cancelada</option>
-          <option [value]="5">Suspensa</option>
+        <select class="custom-select" id="statust"  name="statust" style="flex:none; width: fit-content;">
+          <option selected>Status tarefa</option>
+          <option *ngFor="let currentStatus of statusSelect" [(ngValue)]=currentStatus.Id>{{currentStatus.Status}}</option>
         </select>
+
       </div>
 
       <button type="submit" class="btn btn-primary">Salvar</button> <button type="button" (click)="callTasks()"

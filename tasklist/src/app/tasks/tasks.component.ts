@@ -14,6 +14,7 @@ import { StaticSymbolResolver } from '@angular/compiler';
 export class TasksComponent implements OnInit {
 
   public tasks: Tasks = new Tasks();
+  statusSelect: any[];
   form: FormGroup;
   sucesso: any;
   erro: any;
@@ -25,7 +26,7 @@ export class TasksComponent implements OnInit {
   ngOnInit(): void {
 
     this.PrepareForm();
-
+    this.statusSelect = this.OptionsStatusSelect();
 
   }
 
@@ -57,4 +58,19 @@ export class TasksComponent implements OnInit {
   }
 
 
+  OptionsStatusSelect(): any[] {
+
+    var statusList = [
+      { Id: 1, Status: "Aberto" },
+      { Id: 2, Status: "Em andamento" },
+      { Id: 3, Status: "Finalizada" },
+      { Id: 4, Status: "Cancelada" },
+      { Id: 5, Status: "Suspensa" }
+    ]
+
+    return statusList;
+  }
+
+
 }
+
