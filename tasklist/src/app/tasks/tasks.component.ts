@@ -1,8 +1,10 @@
 import { TaskService } from './../services/tasks/task.service';
 import { Tasks } from './../entities/Tasks';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { StaticSymbolResolver } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-tasks',
@@ -12,29 +14,42 @@ import { Router } from '@angular/router';
 export class TasksComponent implements OnInit {
 
   public tasks: Tasks = new Tasks();
+  form: FormGroup;
   sucesso: any;
   erro: any;
-  public Status: number;
 
-  constructor(private tskService: TaskService, private router: Router) { }
+
+
+  constructor(private tskService: TaskService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
+    this.PrepareForm();
+
+
   }
 
-  Create(frm: FormGroup): any {
+  Create(): any {
 
-    this.tasks.Status = this.Status;
-
-    this.tskService.addTask(this.tasks).subscribe(
+    this.tskService.addTask(this.form.value).subscribe(
       data => this.sucesso = data,
       error => this.erro = error
     );
 
-    frm.reset();
+    this.form.reset();
 
   }
 
+  PrepareForm() {
+
+    this.form = this.formBuilder.group(
+      {
+        title: [null, Validators.required],
+        description: [null, Validators.required]
+      }
+    )
+
+  }
 
 
   callTasks(): void {
