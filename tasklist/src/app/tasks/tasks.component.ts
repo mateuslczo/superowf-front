@@ -3,7 +3,6 @@ import { Tasks } from './../entities/Tasks';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { StaticSymbolResolver } from '@angular/compiler';
 
 
 @Component({
@@ -18,8 +17,6 @@ export class TasksComponent implements OnInit {
   form: FormGroup;
   sucesso: any;
   erro: any;
-
-
 
   constructor(private tskService: TaskService, private router: Router, private formBuilder: FormBuilder) { }
 
@@ -46,7 +43,8 @@ export class TasksComponent implements OnInit {
     this.form = this.formBuilder.group(
       {
         title: [null, Validators.required],
-        description: [null, Validators.required]
+        description: [null, Validators.required],
+        status: [1, Validators.required]
       }
     )
 
