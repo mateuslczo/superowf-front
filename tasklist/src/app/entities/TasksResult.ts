@@ -3,6 +3,8 @@ export class TasksResult {
 
   constructor() {
 
+    this.Id = '';
+
     this.Title = '';
 
     this.TitleDescription = '';
@@ -16,6 +18,8 @@ export class TasksResult {
     this.ConclusionDate = null;
 
   }
+
+  Id: number;
 
   Title: string;
 
