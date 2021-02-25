@@ -23,7 +23,7 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.params.subscribe((params: any) => {
-      const id = params['id'];
+      const id = params.id;
       this.getTaskById(id);
     });
 

@@ -1,3 +1,5 @@
+import { TasksResult } from './../../entities/TasksResult';
+import { Tasks } from './../../entities/Tasks';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -12,6 +14,8 @@ export class TaskService {
 
   private readonly URL_API = `${environment.API}`;
   private token: string;
+
+  public  tskResult: Array<TasksResult>;
 
   private httpOptions: any;
 
@@ -49,11 +53,17 @@ export class TaskService {
 
   }
 
-  allTask(): Observable<any> {
+  allTask(): Observable<TasksResult[]> {
 
-    return this.http.get(this.URL_API + '/tasks');
+    const taskList = this.http.get<TasksResult[]>(this.URL_API + '/tasks');
+
+    return taskList;
 
   }
+
+
+
+
 
   taskById(id: number): Observable<any> {
 
@@ -66,8 +76,6 @@ export class TaskService {
     return this.http.delete(this.URL_API + '/tasks/' + id);
 
   }
-
-
 
 }
 

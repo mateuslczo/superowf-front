@@ -23,7 +23,7 @@ export class TasksComponent implements OnInit {
   ngOnInit(): void {
 
     this.PrepareForm();
-    this.statusSelect = this.OptionsStatusSelect();
+    this.statusSelect = this.tasks.OptionsStatusSelect();
 
   }
 
@@ -38,7 +38,7 @@ export class TasksComponent implements OnInit {
 
   }
 
-  PrepareForm() {
+  PrepareForm(): void {
 
     this.form = this.formBuilder.group(
       {
@@ -46,27 +46,13 @@ export class TasksComponent implements OnInit {
         description: [null, Validators.required],
         status: [1, Validators.required]
       }
-    )
+    );
 
   }
 
 
   callTasks(): void {
     this.router.navigate(['list']);
-  }
-
-
-  OptionsStatusSelect(): any[] {
-
-    var statusList = [
-      { Id: 1, Status: "Aberto" },
-      { Id: 2, Status: "Em andamento" },
-      { Id: 3, Status: "Finalizada" },
-      { Id: 4, Status: "Cancelada" },
-      { Id: 5, Status: "Suspensa" }
-    ]
-
-    return statusList;
   }
 
 
