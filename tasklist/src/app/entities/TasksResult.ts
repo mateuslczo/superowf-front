@@ -3,7 +3,7 @@ export class TasksResult {
 
   constructor() {
 
-    this.Id = '';
+    this.Id = null;
 
     this.Title = '';
 
