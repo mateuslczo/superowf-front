@@ -31,7 +31,7 @@ export class ListComponent implements OnInit {
 
   getAllTask(): any {
 
-    return this.tskService.allTask().subscribe(data => this.tasksResult = this.formatResult(data));;
+    return this.tskService.allTask().subscribe(data => this.tasksResult = this.tskService.formatResult(data));;
 
   }
 
@@ -52,29 +52,30 @@ export class ListComponent implements OnInit {
 
   }
 
-  formatResult(resultList: TasksResult[]): TasksResult[] {
+  // formatResult(resultList: TasksResult[]): TasksResult[] {
 
-    const tskl = new Array<TasksResult>();
+  //   const tskl = new Array<TasksResult>();
 
-    for (const result of resultList) {
+  //   for (const result of resultList) {
 
-      const tsk = new TasksResult();
+  //     const tsk = new TasksResult();
 
-      tsk.Title = result.Title;
-      tsk.TitleDescription = result.TitleDescription;
-      tsk.Status = result.Status;
-      tsk.StatusDescription = tsk.SetStatusById(result.Status);
-      tsk.ConclusionDate = result.ConclusionDate;
-      tsk.CreateDate = result.CreateDate;
-      tsk.EditDate = result.EditDate;
+  //     tsk.Id = result.Id;
+  //     tsk.Title = result.Title;
+  //     tsk.TitleDescription = result.TitleDescription;
+  //     tsk.Status = result.Status;
+  //     tsk.StatusDescription = tsk.SetStatusById(result.Status);
+  //     tsk.ConclusionDate = result.ConclusionDate;
+  //     tsk.CreateDate = result.CreateDate;
+  //     tsk.EditDate = result.EditDate;
 
-      tskl.push(tsk);
+  //     tskl.push(tsk);
 
-    }
+  //   }
 
-    return tskl;
+  //   return tskl;
 
-  }
+  // }
 
 
 

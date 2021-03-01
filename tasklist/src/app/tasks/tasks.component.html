@@ -29,7 +29,7 @@
         <select class="custom-select" formControlName="status" id="status" name="status"
           style="flex:none; width: fit-content;">
           <option selected>Status tarefa</option>
-          <option *ngFor="let currentStatus of statusSelect" [(ngValue)]=currentStatus.Id>{{currentStatus.Status}}
+          <option *ngFor="let currentStatus of statusList" [(ngValue)]=currentStatus.Id>{{currentStatus.Status}}
           </option>
         </select><br>
       </div>

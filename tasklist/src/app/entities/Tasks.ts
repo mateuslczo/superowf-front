@@ -15,20 +15,6 @@ export class Tasks {
   ConclusionDate?: Date;
 
 
-  OptionsStatusSelect(): any[] {
-
-    var statusList = [
-      { Id: 1, Status: "Aberto" },
-      { Id: 2, Status: "Em andamento" },
-      { Id: 3, Status: "Finalizada" },
-      { Id: 4, Status: "Cancelada" },
-      { Id: 5, Status: "Suspensa" }
-    ]
-
-    return statusList;
-
-  }
-
   SetStatusById(idStatus: number): string {
 
     let statusTaskDesc = "Status indefinido";
