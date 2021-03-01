@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class TasksComponent implements OnInit {
 
   public tasks: Tasks = new Tasks();
-  statusSelect: any[];
+  statusList: any[];
   form: FormGroup;
   sucesso: any;
   erro: any;
@@ -22,8 +22,8 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.PrepareForm();
-    this.statusSelect = this.tasks.OptionsStatusSelect();
+    this.prepareForm();
+    this.statusList = this.tskService.OptionsStatusSelect();
 
   }
 
@@ -38,7 +38,7 @@ export class TasksComponent implements OnInit {
 
   }
 
-  PrepareForm(): void {
+  prepareForm(): void {
 
     this.form = this.formBuilder.group(
       {

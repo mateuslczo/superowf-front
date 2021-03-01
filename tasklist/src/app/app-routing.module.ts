@@ -10,7 +10,7 @@ import { EditComponent } from './edit/edit.component';
 const routes: Routes = [
 
   // { path: '',   redirectTo: 'login', pathMatch: 'full' },
-  { path: '',   redirectTo: 'list', pathMatch: 'full' },
+  { path: '',   redirectTo: 'tasks', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'tasks', component: TasksComponent},
   { path: 'list', component: ListComponent},
