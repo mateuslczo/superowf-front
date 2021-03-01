@@ -1,46 +1,50 @@
+<div class="row">
 
-  <div class="row">
 
+  <div class="col-md-3" id="divLeft"></div>
 
-      <div class="col-md-3" id="divLeft"></div>
+  <div class="col-md-6" id="divCenter">
 
-      <div class="col-md-6" id="divCenter">
+    <form method="post" [formGroup]="form" (ngSubmit)="Create()">
 
-            <form method="post" #frm="ngForm" (ngSubmit)="Create(frm)">
-
-              <div class="form-group row">
-                <label for="title" class="col-sm-2 col-form-label">Tarefa</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="title" name="title" [(ngModel)]="tasks.Title" placeholder="Titulo" required>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="Description" class="col-sm-2 col-form-label">Descrição</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="Description" name="Description" [(ngModel)]="tasks.Description" placeholder="Descrição">
-                </div>
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="Status">Status</label>
-                </div>
-                <select class="custom-select" [(ngModel)]="Status" style="flex:none; width: fit-content;" id="Status">
-                  <option selected>Escolha...</option>
-                  <option [ngValue]="1">Aberto</option>
-                  <option [ngValue]="2">Em andamento</option>
-                  <option [ngValue]="3">Finalizada</option>
-                  <option [ngValue]="4">Cancelada</option>
-                  <option [ngValue]="5">Suspensa</option>
-                </select>
-              </div>
-
-              <button type="submit" class="btn btn-primary">Salvar</button> <button type="button" (click)="callTasks()" class="btn btn-warning">Listar</button> <span id="msg">{{this.sucesso.message}}</span>
-
-          </form>
-
+      <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Tarefa</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="title" name="title" id="title" placeholder="Titulo"
+            required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Description" class="col-sm-2 col-form-label">Descrição</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="description" name="description" id="description"
+            placeholder="Descrição">
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="Status">Status</label>
         </div>
 
+        <select class="custom-select" formControlName="status" id="status" name="status"
+          style="flex:none; width: fit-content;">
+          <option selected>Status tarefa</option>
+          <option *ngFor="let currentStatus of statusList" [(ngValue)]=currentStatus.Id>{{currentStatus.Status}}
+          </option>
+        </select><br>
+      </div>
 
-      <div class="col-md-3" id="divRight"></div>
+      <button *ngIf="form.valid === false" disabled class="btn btn-primary">Salvar</button>
 
-    </div>
+      <button type="submit" *ngIf="form.valid === true" class="btn btn-primary">Salvar</button>
+      <button type="button" (click)="callTasks()" class="btn btn-warning">Listar</button>
+      <span *ngIf="this.sucesso!=null" id="msg">{{this.sucesso.message}}</span>
+
+    </form>
+
+  </div>
+
+
+  <div class="col-md-3" id="divRight"></div>
+
+</div>

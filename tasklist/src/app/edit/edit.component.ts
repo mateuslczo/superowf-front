@@ -1,8 +1,10 @@
 import { TaskService } from './../services/tasks/task.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Tasks } from '../entities/Tasks';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { async } from 'rxjs/internal/scheduler/async';
+import { TasksResult } from '../entities/TasksResult';
 
 @Component({
   selector: 'app-edit',
@@ -11,42 +13,82 @@ import { FormGroup } from '@angular/forms';
 })
 export class EditComponent implements OnInit {
 
-  public tasks: Tasks = new Tasks();
+  public tasks: TasksResult = new TasksResult();
   public Status: number;
   public taskEdit: any;
 
+  statusList: any[];
+
+  tasksResult: Array<TasksResult>;
+  frmEdit: FormGroup;
+  statusSelect: string;
   sucesso: any;
   erro: any;
 
-  constructor(private tskService: TaskService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private tskService: TaskService, private router: Router
+    , private route: ActivatedRoute, private formBuilder: FormBuilder) {
+
+    this.prepareEditForm();
+    this.statusList = this.tskService.OptionsStatusSelect();
+
+  }
 
   ngOnInit(): void {
 
-    this.route.params.subscribe((params: any) => {
-      const id = params['id'];
-      this.getTaskById(id);
+  }
+
+
+  prepareEditForm(): void {
+
+    this.route.params.subscribe(
+      (params: any) => {
+
+        const id = params.id; let erro = "";
+
+        this.tskService.taskById(id).subscribe(
+          data => { this.taskEdit = data }
+          , error => { erro = error }
+          , () => {
+
+            this.tasksResult = this.tskService.formatResult(this.taskEdit);
+
+            this.frmEdit = this.formBuilder.group({
+
+              id: this.tasksResult !== undefined ? this.tasksResult[0].Id : 0,
+              title: this.tasksResult !== undefined ? this.tasksResult[0].Title : "",
+              description: this.tasksResult !== undefined ? this.tasksResult[0].TitleDescription : "",
+              status: this.tasksResult !== undefined ? this.tasksResult[0].StatusDescription : "à definir",
+
+            });
+
+            this.statusSelect = this.tasksResult[0].StatusDescription;
+
+
+          });
+      });
+
+    this.frmEdit = this.formBuilder.group({
+
+      id: this.tasksResult !== undefined ? this.tasksResult[0].Id : 0,
+      title: this.tasksResult !== undefined ? this.tasksResult[0].Title : "",
+      description: this.tasksResult !== undefined ? this.tasksResult[0].TitleDescription : "",
+      status: this.tasksResult !== undefined ? this.tasksResult[0].StatusDescription : "à definir",
+
     });
 
   }
 
-  getTaskById(id: number): any {
-    this.tskService.taskById(id).subscribe(
-      data => this.taskEdit = data,
-    );
-    this.tasks = this.taskEdit;
-  }
 
+  /// Salva alterações
+  Edit(): any {
 
-  Edit(frm: FormGroup): any {
-
-    this.taskEdit.Status = this.Status;
-
-    this.tskService.updateTaskById(this.taskEdit).subscribe(
+    this.tskService.updateTaskById(this.frmEdit.value).subscribe(
       data => this.sucesso = data,
       error => this.erro = error
     );
 
-    frm.reset();
+
+    this.frmEdit.reset();
 
   }
 
