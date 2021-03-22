@@ -36,8 +36,6 @@ export class ListComponent implements OnInit {
                                         error => { this.erro = error}
     );
 
-    // let list = this.tskService.allTask()
-
     return this.tasksResult;
 
   }
