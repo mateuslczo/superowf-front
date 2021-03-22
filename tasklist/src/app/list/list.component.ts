@@ -14,16 +14,17 @@ export class ListComponent implements OnInit {
 
   public tasks: any;
   public tasksResult: Array<TasksResult>;
+  over: boolean;
+  out: boolean;
+  erro: any;
 
   constructor(private tskService: TaskService, private router: Router, private route: ActivatedRoute) {
-
-    this.getAllTask();
-
   }
 
 
   ngOnInit(): any {
 
+    this.getAllTask();
 
   }
 
@@ -31,13 +32,25 @@ export class ListComponent implements OnInit {
 
   getAllTask(): any {
 
-    return this.tskService.allTask().subscribe(data => this.tasksResult = this.tskService.formatResult(data));;
+    this.tskService.allTask().subscribe(data => { this.tasksResult = this.tskService.formatResult(data)},
+                                        error => { this.erro = error}
+    );
+
+    // let list = this.tskService.allTask()
+
+    return this.tasksResult;
 
   }
 
   goEdit(Id: any): void {
 
     this.router.navigate(['edit', Id]);
+
+  }
+
+  goAdd(): void {
+
+    this.router.navigate(['tasks']);
 
   }
 
@@ -52,33 +65,19 @@ export class ListComponent implements OnInit {
 
   }
 
-  // formatResult(resultList: TasksResult[]): TasksResult[] {
-
-  //   const tskl = new Array<TasksResult>();
-
-  //   for (const result of resultList) {
-
-  //     const tsk = new TasksResult();
-
-  //     tsk.Id = result.Id;
-  //     tsk.Title = result.Title;
-  //     tsk.TitleDescription = result.TitleDescription;
-  //     tsk.Status = result.Status;
-  //     tsk.StatusDescription = tsk.SetStatusById(result.Status);
-  //     tsk.ConclusionDate = result.ConclusionDate;
-  //     tsk.CreateDate = result.CreateDate;
-  //     tsk.EditDate = result.EditDate;
-
-  //     tskl.push(tsk);
-
-  //   }
-
-  //   return tskl;
-
-  // }
 
 
+  notEmphasisLine(idd: any): void {
 
+    document.getElementById(idd).className = 'lineNormal';
+
+  }
+
+  emphasisLine(idd: any): void {
+
+    document.getElementById(idd).className = 'lineEmphasis';
+
+  }
 
 
 }

@@ -90,7 +90,7 @@ export class TaskService {
   }
 
 
-  formatResult(resultList: TasksResult[]): TasksResult[] {
+  formatResult(resultList: any): TasksResult[] {
 
     const tskl = new Array<TasksResult>();
 
@@ -105,7 +105,7 @@ export class TaskService {
 
         tsk.Id = result.Id;
         tsk.Title = result.Title;
-        tsk.TitleDescription = result.TitleDescription;
+        tsk.TitleDescription = result.Description;
         tsk.Status = result.Status;
         tsk.StatusDescription = tsk.SetStatusById(result.Status);
         tsk.ConclusionDate = result.ConclusionDate;

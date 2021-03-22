@@ -4,7 +4,7 @@
 
   <div class="col-md-6" id="divCenter">
 
-    <form method="post" [formGroup]="frmEdit" (ngSubmit)="Edit()">
+    <form method="post" [formGroup]="form" (ngSubmit)="Edit()">
 
       <div class="form-group row">
         <label for="title" class="col-sm-2 col-form-label">Id</label>
@@ -32,8 +32,7 @@
 
         <select class="custom-select" formControlName="status" id="status" name="status"
           style="flex:none; width: fit-content;">
-          <!-- <option selected>{{statusSelect}}</option> -->
-          <option selected *ngFor="let currentStatus of statusList" [(ngValue)]=currentStatus.Id>{{currentStatus.Status}}
+          <option [selected]="currentStatus.Status==statusSelect" *ngFor="let currentStatus of statusList" [(ngValue)]=currentStatus.Id>{{currentStatus.Status}}
           </option>
         </select>
       </div>

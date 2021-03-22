@@ -2,7 +2,7 @@ import { TaskService } from './../services/tasks/task.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Tasks } from '../entities/Tasks';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { async } from 'rxjs/internal/scheduler/async';
 import { TasksResult } from '../entities/TasksResult';
 
@@ -20,7 +20,7 @@ export class EditComponent implements OnInit {
   statusList: any[];
 
   tasksResult: Array<TasksResult>;
-  frmEdit: FormGroup;
+  form: FormGroup;
   statusSelect: string;
   sucesso: any;
   erro: any;
@@ -52,27 +52,27 @@ export class EditComponent implements OnInit {
 
             this.tasksResult = this.tskService.formatResult(this.taskEdit);
 
-            this.frmEdit = this.formBuilder.group({
+            this.form = this.formBuilder.group({
 
               id: this.tasksResult !== undefined ? this.tasksResult[0].Id : 0,
               title: this.tasksResult !== undefined ? this.tasksResult[0].Title : "",
               description: this.tasksResult !== undefined ? this.tasksResult[0].TitleDescription : "",
-              status: this.tasksResult !== undefined ? this.tasksResult[0].StatusDescription : "à definir",
+              status: this.tasksResult !== undefined ? this.tasksResult[0].Status : "à definir",
 
             });
 
-            this.statusSelect = this.tasksResult[0].StatusDescription;
+            this.statusSelect = this.tasksResult[0].StatusDescription
 
 
           });
       });
 
-    this.frmEdit = this.formBuilder.group({
+    this.form = this.formBuilder.group({
 
       id: this.tasksResult !== undefined ? this.tasksResult[0].Id : 0,
       title: this.tasksResult !== undefined ? this.tasksResult[0].Title : "",
       description: this.tasksResult !== undefined ? this.tasksResult[0].TitleDescription : "",
-      status: this.tasksResult !== undefined ? this.tasksResult[0].StatusDescription : "à definir",
+      status: this.tasksResult !== undefined ? this.tasksResult[0].Status : "à definir",
 
     });
 
@@ -82,13 +82,13 @@ export class EditComponent implements OnInit {
   /// Salva alterações
   Edit(): any {
 
-    this.tskService.updateTaskById(this.frmEdit.value).subscribe(
+    this.tskService.updateTaskById(this.form.value).subscribe(
       data => this.sucesso = data,
       error => this.erro = error
     );
 
 
-    this.frmEdit.reset();
+    this.form.reset();
 
   }
 

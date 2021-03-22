@@ -9,6 +9,15 @@
   border-radius: 50px;
 }
 
+.lineEmphasis{
+  background-color: rgb(233, 224, 224);
+}
+
+.lineNormal{
+  background-color: white;
+}
+
+
 #btn-edit {
   background-color:green;
   border: none;
